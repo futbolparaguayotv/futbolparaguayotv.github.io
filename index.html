@@ -1,0 +1,137 @@
+
+<!doctype html>
+<html lang="es">
+<head>
+	<meta name="site-verification" content="5aaef3263c0ce516c90dd1cc190bae18"/>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Ver Star Plus online en VIVO y en directo. Fútbol Play TV</title>
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://futbolparaguayotv.github.io/futbolparaguayotv/" />
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Mira Star Plus en vivo y disfruta del mejor fútbol en directo. Accede a transmisiones exclusivas y contenido en vivo.">
+    <meta name="keywords" content="Star Plus, Futbol en vivo, streaming, partidos en directo">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Fútbol Play TV">
+
+    <!-- Social Media Meta Tags -->
+    <meta property="og:title" content="Ver Star Plus online en VIVO y en directo. Fútbol Play TV">
+    <meta property="og:description" content="Mira Star Plus en vivo y disfruta del mejor fútbol en directo. Accede a transmisiones exclusivas y contenido en vivo.">
+    <meta property="og:image" content="https://futbollibreonline.com/img/futbollibre.png">
+
+    <!-- Favicon Icons -->
+    <link rel="apple-touch-icon" sizes="57x57" href="https://futbollibre.pe/favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="https://futbollibre.pe/favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="https://futbollibre.pe/favicon/apple-icon-72x72.png">
+    <meta name="msapplication-TileColor" content="##0a0a0a">
+    <meta name="msapplication-TileImage" content="https://futbollibre.pe/favicon/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+    <meta name='referrer' content='no-referrer' />
+
+    <!-- Scripts y CSS -->
+    <script type="text/javascript" src="https://futbollibre.pe/horario.js?v"></script>
+    <link href="https://futbollibre.pe/css/bootstrap.css?v3" rel="stylesheet">
+    <link href="https://futbollibre.pe/css/portada.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <meta http-Equiv="Cache-Control" Content="no-cache" />
+    <meta http-Equiv="Pragma" Content="no-cache" />
+    <meta http-Equiv="Expires" Content="0" />
+    <link href="https://futbollibre.pe/css/starp.css" rel="stylesheet">
+
+</head>
+<body>
+https://diclotrans.com/redirect?id=28788&auth=84c758e387d7072ba3cdc0ecbb063ab50875945a
+<div id="navbar"></div>
+<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow">
+<a class="my-0 mr-md-auto font-weight-normal fl" rel="home" href="/">
+Fútbol Play TV
+</a>
+
+<a class="btn btn-outline-fl" rel="home" href="https://www.futbolparaguayotv.xyz/">
+    <img src="https://futbolparaguayotv.app/wp-content/uploads/2023/04/image-removebg-preview-63-150x150.png" alt="Logo de Fútbol Play TV" width="25" height="25">
+</a>
+</div>
+<div class="w3-main w3-content w3-padding" style="max-width:1200px">
+    <center>
+<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh2fq2yqnb3if6dFCqQgwXp2qTRF2IzXAKHBcL6zgyE2sFbwmIttvFbAeOiJwuAZvzKpdINd3vrraNaft2e91j8g0y42AVdk0xqABTIVSfBYXAIGT6Ti8LWPaZ6Sd9dJtDtzgYuMHbiCRv9/s16000/star-plus-general.png" alt="Star+" width="250" height="100"> 
+</center><br><p class="display-5 text-center">Elige el evento:</p>
+	
+<div id="eventos"></div>
+
+<br>
+
+<div class="sharethis-inline-share-buttons"></div>
+
+<script>
+function eventos() {
+    var x = Math.random().toString(36).substring(7);
+
+    $.ajax({
+        url: "https://corsproxy.io/?url=https://futbollibre.pe/eventos.json?" + x,
+        type: "get",
+        success: function (arr) {
+            var content = '';
+
+            for (var i = 0; i < arr.length; i++) {
+                if (i % 4 == 0) {
+                    if (i != 0) content += '</div>';
+                    content += '<div class="w3-row-padding w3-padding-16 w3-center" id="copa">';
+                }
+
+                var obj = arr[i];
+                var estadoEvento = obj['fecha-evento'];
+                var status, color;
+
+                if (estadoEvento === "EN VIVO") {
+                    status = "EN VIVO";
+                    color = "danger";
+                } else if (estadoEvento === "FINALIZADO") {
+                    status = "FINALIZADO";
+                    color = "dark";
+                } else if (estadoEvento.match(/\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z/)) { // Si es una fecha
+                    var fechaEvento = new Date(estadoEvento);
+                    var ahora = new Date();
+                    if (fechaEvento > ahora) {
+                        status = calcularCuentaRegresiva(fechaEvento); // Mostrar cuenta regresiva
+                        color = "dark"; // Usar clase para verde oscuro
+                    } else {
+                        status = "FINALIZADO";
+                    }
+                } else {
+                    status = "Próximamente"; // O cualquier otro estado por defecto
+                    color = "dark";
+                }
+
+                content += '<div class="w3-quarter"><a href="' + obj['url'] + '"><img src="https://prod-ripcut-delivery.disney-plus.net/v1/variant/star/' + obj['img'] + '/scale?width=500&aspectRatio=1.78&format=jpeg" alt="' + obj['title'] + '" style="width:100%" class="w3-hover-opacity"></a><a class="btn btn-block btn-' + color + '" href="' + obj['url'] + '">' + status + '</a> <div class="w3-card-4"><p><b>' + obj['league'] + '</b></p><p>' + obj['title'] + '</p></div></div>';
+
+                if (i == arr.length - 1) content += '</div>';
+            }
+
+            $("#eventos").html(content);
+        }
+    });
+}
+
+function calcularCuentaRegresiva(fechaEvento) {
+    var diferencia = fechaEvento - new Date();
+    var horas = Math.floor(diferencia / 3600000);
+    var minutos = Math.floor((diferencia % 3600000) / 60000);
+    var segundos = Math.floor((diferencia % 60000) / 1000);
+
+    // Verifica si el evento es hoy
+    if (fechaEvento.toDateString() === new Date().toDateString()) {
+        return 'EMPIEZA EN: ' + horas + 'h ' + minutos + 'm ' + segundos + 's';
+    } else {
+        return horas + 'h ' + minutos + 'm ' + segundos + 's';
+    }
+}
+
+eventos();
+window.setInterval(function() { eventos(); }, 60000);
+</script>
+
+
+</body>
+</html>
