@@ -71,7 +71,7 @@ function eventos() {
     var x = Math.random().toString(36).substring(7);
 
     $.ajax({
-        url: "https://corsproxy.io/?url=https://todopelotatv.live/json/starplus.json?uegnd" + x,
+        url: "https://television.libre.futbol/tv2/star-plus/eventos.json?" + x,
         type: "get",
         success: function (arr) {
             var content = '';
