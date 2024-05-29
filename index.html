@@ -61,7 +61,7 @@ Fútbol Libre TV
                 var x = Math.random().toString(36).substring(7);
             
                 $.ajax({
-                    url : "eventos.json?"+x,
+                    url : "https://television.libre.futbol/tv2/star-plus/eventos.json?"+x,
                     type : "get",
                     success: function (arr) {
                         var content = '';
