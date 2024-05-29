@@ -67,72 +67,58 @@ Fútbol Play TV
 <div class="sharethis-inline-share-buttons"></div>
 
 <script>
-function eventos() {
-    var x = Math.random().toString(36).substring(7);
-
-    $.ajax({
-        url: "https://television.libre.futbol/tv2/star-plus/eventos.json?" + x,
-        type: "get",
-        success: function (arr) {
-            var content = '';
-
-            for (var i = 0; i < arr.length; i++) {
-                if (i % 4 == 0) {
-                    if (i != 0) content += '</div>';
-                    content += '<div class="w3-row-padding w3-padding-16 w3-center" id="copa">';
-                }
-
-                var obj = arr[i];
-                var estadoEvento = obj['fecha-evento'];
-                var status, color;
-
-                if (estadoEvento === "EN VIVO") {
-                    status = "EN VIVO";
-                    color = "danger";
-                } else if (estadoEvento === "FINALIZADO") {
-                    status = "FINALIZADO";
-                    color = "dark";
-                } else if (estadoEvento.match(/\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z/)) { // Si es una fecha
-                    var fechaEvento = new Date(estadoEvento);
-                    var ahora = new Date();
-                    if (fechaEvento > ahora) {
-                        status = calcularCuentaRegresiva(fechaEvento); // Mostrar cuenta regresiva
-                        color = "dark"; // Usar clase para verde oscuro
-                    } else {
-                        status = "FINALIZADO";
+            function eventos()
+            {
+                var x = Math.random().toString(36).substring(7);
+            
+                $.ajax({
+                    url : "eventos.json?"+x,
+                    type : "get",
+                    success: function (arr) {
+                        var content = '';
+                        
+                        for (var i = 0; i < arr.length; i++)
+                        {
+                            if (i%4==0)
+                            {
+                                if (i != 0)
+                                    content += '</div>';
+                                
+                                content += '<div class="w3-row-padding w3-padding-16 w3-center" id="copa">';
+                            }
+                                
+                            var obj = arr[i];
+                    
+                            if (obj['status'] == "FINALIZADO" || obj['status'] == "EN VIVO")
+                                status = obj['status'];
+                            else
+                                status = 'HOY | <span class="t">' + obj['status'] + '</span> hs';
+                        
+                            if (status == "EN VIVO")
+                                color = "danger";
+                            else
+                                color = "dark";
+                                
+                            content += '<div class="w3-quarter"><a href="' + obj['url'] + '"><img src="https://prod-ripcut-delivery.disney-plus.net/v1/variant/star/' + obj['img'] + '/scale?width=500&aspectRatio=1.78&format=jpeg" alt="Star+" style="width:100%" class="w3-hover-opacity"></a><a class="btn btn-block btn-' + color + '" href="' + obj['url'] + '">' + status + '</a> <div class="w3-card-4"><p><b>' + obj['league'] + '</b></p><p>' + obj['title'] + '</p></div></div>';
+                            
+                            if (i == arr.length-1)
+                                content += '</div>';
+                        }
+                        
+                        $("#eventos").html(content);
+                        
+                        guardaHorario();
+                        dT();
                     }
-                } else {
-                    status = "Próximamente"; // O cualquier otro estado por defecto
-                    color = "dark";
-                }
-
-                content += '<div class="w3-quarter"><a href="' + obj['url'] + '"><img src="https://prod-ripcut-delivery.disney-plus.net/v1/variant/star/' + obj['img'] + '/scale?width=500&aspectRatio=1.78&format=jpeg" alt="' + obj['title'] + '" style="width:100%" class="w3-hover-opacity"></a><a class="btn btn-block btn-' + color + '" href="' + obj['url'] + '">' + status + '</a> <div class="w3-card-4"><p><b>' + obj['league'] + '</b></p><p>' + obj['title'] + '</p></div></div>';
-
-                if (i == arr.length - 1) content += '</div>';
+                })
             }
-
-            $("#eventos").html(content);
-        }
-    });
-}
-
-function calcularCuentaRegresiva(fechaEvento) {
-    var diferencia = fechaEvento - new Date();
-    var horas = Math.floor(diferencia / 3600000);
-    var minutos = Math.floor((diferencia % 3600000) / 60000);
-    var segundos = Math.floor((diferencia % 60000) / 1000);
-
-    // Verifica si el evento es hoy
-    if (fechaEvento.toDateString() === new Date().toDateString()) {
-        return 'EMPIEZA EN: ' + horas + 'h ' + minutos + 'm ' + segundos + 's';
-    } else {
-        return horas + 'h ' + minutos + 'm ' + segundos + 's';
-    }
-}
-
-eventos();
-window.setInterval(function() { eventos(); }, 60000);
-</script>
+            
+            eventos();
+            
+            window.setInterval(function() {
+                eventos();
+            }, 60000);
+            </script>
 
 
 </body>
