@@ -1,14 +1,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="robots" content="noindex" />
-<script data-cfasync="false" async type="text/javascript" src=""></script>
 <style type="text/css">
-
 body {
    margin: 0;
    padding: 0;
+   overflow-y: hidden;
 }
 </style>
+
 </head>
 <script type="text/javascript">
 function getParameterByName(name) {
@@ -24,19 +24,18 @@ var getKEY  = getParameterByName('key');
 var getKEY2  = getParameterByName('key2');
 if (getURL == "#") {alert('Vuelve a la página anterior');}
 </script>
-<script src="//ssl.p.jwpcdn.com/player/v/8.26.0/jwplayer.js"></script>
-<script> jwplayer.key = 'XSuP4qMl+9tK17QNb+4+th2Pm9AWgMO/cYH8CI0HGGr7bdjo';
-</script>
-<button onclick="openFullscreen()" id="btn">ABRIR PANTALLA COMPLETA Y SONIDO</button>
+<script src="https://content.jwplatform.com/libraries/KB5zFt7A.js"></script>
+<script> jwplayer.key='XSuP4qMl+9tK17QNb+4+th2Pm9AWgMO/cYH8CI0HGGr7bdjo';</script>
 <div id="player"></div>
 <script type="text/javascript">
 var playerInstance=jwplayer("player");
 
 playerInstance.setup({
-
+"logo": { "file": "https://3.bp.blogspot.com/-swALdaKJT4k/YFYW0p1MkMI/AAAAAAAABkc/VJkuL3kmJMgVx5jODsIN95jvvrKlQ154wCK4BGAYYCw/s1600/Sin%2Bt%25C3%25ADtulo-1.png",
+	 },
     playlist: [{
-    "title": "Fútbol Play TV | Star+",
-    "description": "Mira Star+ de manera gratuita",
+   "title": "Futbol Play tv | Star+",
+    "description": "Mirar Star+ de manera gratuita",
     "image": getIMG,
       "sources": [
         {
@@ -53,9 +52,9 @@ playerInstance.setup({
     width: "100%",
     height: "100%",
     aspectratio: "16:9",
-    autostart: false,
+    autostart: true,
     cast: {},
     sharing: {}
-}); var elem = document.documentElement; function openFullscreen() { jwplayer().setMute(false); jwplayer().setFullscreen(true); if (elem.requestFullscreen) { elem.requestFullscreen(); } else if (elem.webkitRequestFullscreen) { /* Safari / elem.webkitRequestFullscreen(); } else if (elem.msRequestFullscreen) { / IE11 */ elem.msRequestFullscreen(); } };
+}); 
 </script>
 </html>
